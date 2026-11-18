@@ -106,3 +106,23 @@
     }
   });
 })();
+
+// Version 3: big images drift a little slower than the page (soft parallax)
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  var imgs = [].slice.call(document.querySelectorAll('.drift'));
+  if (!imgs.length) return;
+  function drift(){
+    var vh = window.innerHeight;
+    imgs.forEach(function(img){
+      var r = img.parentElement.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > vh) return;
+      var p = (r.top + r.height / 2 - vh / 2) / (vh + r.height); // -0.5 .. 0.5
+      img.style.transform = 'translate3d(0,' + (p * -12).toFixed(2) + '%,0)';
+    });
+  }
+  var t = false;
+  window.addEventListener('scroll', function(){ if (!t){ t = true; requestAnimationFrame(function(){ t = false; drift(); }); } }, { passive: true });
+  window.addEventListener('resize', drift);
+  drift();
+})();
