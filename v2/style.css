@@ -463,3 +463,6 @@ em,i{ font-style:normal; }
 .service{ border-top-color:var(--line); }
 /* the strip of videos and the photo tabs sit a little closer to what follows */
 .strip{ padding-bottom:8px; }
+
+/* top countries as text (replaces the flags) */
+.stats-row b.countries{ font-size:clamp(1.25rem,2.2vw,1.7rem); letter-spacing:-.02em; line-height:1.1; }
