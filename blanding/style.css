@@ -398,3 +398,15 @@ em,i{ font-style:normal; }
 
 /* gallery: same 4:5 format for every photo, so each tab reads as one calm set */
 .panel img{ aspect-ratio:4/5; object-fit:cover; }
+
+/* contact: same light ground as the page, closed off with a thin line like the other chapters */
+.contact{ background:var(--bg); color:var(--ink); padding-top:clamp(40px,6vw,72px); }
+.contact .wrap{ padding-top:18px; background:linear-gradient(var(--ink),var(--ink)) center top / calc(100% - 2 * var(--gutter)) 1px no-repeat; }
+.contact .label{ color:var(--muted); }
+.contact h2{ margin-bottom:14px; }
+.contact-intro{ margin:0 0 clamp(24px,4vw,40px); max-width:34em; color:var(--muted); font-size:clamp(16px,1.5vw,19px); }
+.contact-links{ border-top-color:var(--line); }
+.contact-links a{ border-bottom-color:var(--line); }
+.contact .btn{ border-color:var(--ink); }
+.contact .btn:hover{ background:var(--ink); color:var(--bg); }
+.contact .foot{ border-top-color:var(--line); }
