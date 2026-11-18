@@ -410,3 +410,8 @@ em,i{ font-style:normal; }
 .contact .btn{ border-color:var(--ink); }
 .contact .btn:hover{ background:var(--ink); color:var(--bg); }
 .contact .foot{ border-top-color:var(--line); }
+
+/* future project 08: the open invitation, a little bolder than the rest */
+.next-list li.own{ background:var(--bg-2); border-radius:var(--radius); padding:18px 16px; border-bottom:0; margin-top:14px; }
+.next-list li.own h3{ font-size:clamp(1.2rem,2.2vw,1.5rem); }
+.next-list li.own .link{ font-weight:600; }
