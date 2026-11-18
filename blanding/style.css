@@ -352,7 +352,8 @@ em,i{ font-style:normal; }
   .split-media{ top:calc(var(--head-h) + 24px); height:calc(100svh - var(--head-h) - 48px); max-height:760px; }
   .chapter{ min-height:62svh; padding:18svh 0 0; }
   .chapter:first-child{ padding-top:10svh; }
-  .chapter:last-child{ min-height:auto; padding-bottom:22svh; }
+  /* last chapter: room to scroll up to the same height as the others before the image lets go */
+  .chapter:last-child{ min-height:calc(18svh + min(100svh - var(--head-h) - 48px, 760px)); padding-bottom:0; }
 }
 
 @media (prefers-reduced-motion:reduce){
