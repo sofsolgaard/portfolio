@@ -395,3 +395,6 @@ em,i{ font-style:normal; }
 .offers-head{ margin-bottom:clamp(22px,3vw,32px); }
 .offers-head h2{ font-size:clamp(1.8rem,4.4vw,2.8rem); margin:10px 0 10px; }
 .offers-head p{ max-width:34em; color:var(--muted); margin:0; font-size:clamp(16px,1.5vw,18px); }
+
+/* gallery: same 4:5 format for every photo, so each tab reads as one calm set */
+.panel img{ aspect-ratio:4/5; object-fit:cover; }
