@@ -464,5 +464,7 @@ em,i{ font-style:normal; }
 /* the strip of videos and the photo tabs sit a little closer to what follows */
 .strip{ padding-bottom:8px; }
 
-/* top countries as text (replaces the flags) */
-.stats-row b.countries{ font-size:clamp(1.25rem,2.2vw,1.7rem); letter-spacing:-.02em; line-height:1.1; }
+/* top countries as a small numbered list (replaces the flags) */
+.stats-row .countries{ list-style:none; margin:0 0 8px; padding:0; display:grid; grid-template-columns:auto auto; justify-content:start; gap:4px 22px; }
+.stats-row .countries li{ font-size:clamp(1.05rem,1.7vw,1.3rem); font-weight:700; letter-spacing:-.01em; line-height:1.15; }
+.stats-row .countries i{ font-style:normal; font-size:11px; font-weight:600; color:var(--moss); margin-right:8px; vertical-align:2px; }
