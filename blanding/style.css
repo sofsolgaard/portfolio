@@ -351,7 +351,7 @@ em,i{ font-style:normal; }
   .split{ grid-template-columns:1.1fr 1fr; gap:56px; align-items:start; }
   .split-media{ top:calc(var(--head-h) + 24px); height:calc(100svh - var(--head-h) - 48px); max-height:760px; }
   .chapter{ min-height:62svh; padding:18svh 0 0; }
-  .chapter:first-child{ padding-top:10svh; }
+  .chapter:first-child{ padding-top:10svh; min-height:54svh; } /* 8svh less, so text-to-text is 62svh for all three */
   /* last chapter: room to scroll up to the same height as the others before the image lets go */
   .chapter:last-child{ min-height:calc(18svh + min(100svh - var(--head-h) - 48px, 760px)); padding-bottom:0; }
 }
