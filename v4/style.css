@@ -538,3 +538,19 @@ em,i{ font-style:normal; }
 .offers-head h2{ margin-top:0; }
 @media (min-width:900px){ .contact-grid{ grid-template-columns:1fr; } .contact-grid > *:not(.label){ grid-column:auto; } }
 .contact h2{ margin-top:0; }
+
+/* v4: "My work" without the small label */
+#ugc .chapter-head h2{ margin-top:0; }
+
+/* v4: smaller "Where your product fits in" – same sticky effect, takes less room */
+.split-media{ height:36svh; }
+.chapter{ padding:22px 0 16svh; }
+.chapter h3{ font-size:clamp(1.5rem,3vw,2.2rem); }
+.chapter p{ font-size:clamp(15px,1.3vw,17px); }
+@media (min-width:900px){
+  .split{ grid-template-columns:.9fr 1fr; gap:48px; }
+  .split-media{ height:min(62svh,520px); max-height:none; }
+  .chapter{ min-height:42svh; padding:12svh 0 0; }
+  .chapter:first-child{ padding-top:6svh; min-height:36svh; }
+  .chapter:last-child{ min-height:calc(12svh + min(62svh,520px)); padding-bottom:0; }
+}
