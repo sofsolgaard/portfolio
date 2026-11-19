@@ -415,3 +415,158 @@ em,i{ font-style:normal; }
 .next-list li.own{ background:var(--bg-2); border-radius:var(--radius); padding:18px 16px; border-bottom:0; margin-top:14px; }
 .next-list li.own h3{ font-size:clamp(1.2rem,2.2vw,1.5rem); }
 .next-list li.own .link{ font-weight:600; }
+
+/* =====================================================================
+   v2 (2026-11-18): brand logos, no separator dots, flags, shorter lists
+   ===================================================================== */
+.brands{ padding-top:clamp(28px,4vw,44px); padding-bottom:clamp(8px,2vw,16px); display:grid; gap:16px; }
+.logos{ list-style:none; margin:0; padding:clamp(6px,1vw,10px) 0; display:flex; flex-wrap:wrap; justify-content:center; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.logos li{ flex:0 0 33.333%; display:grid; place-items:center; height:clamp(72px,9vw,104px); padding:0 clamp(12px,2.6vw,36px); color:var(--ink); }
+.logos img, .logos svg{ display:block; width:100%; height:auto; }
+.logo-haglofs svg{ max-width:96px; }
+.logos .logo-ortlieb{ max-width:132px; mix-blend-mode:multiply; filter:grayscale(1) contrast(1.05); }
+.logo-loow svg{ max-width:120px; }
+.logo-campanyon svg{ max-width:128px; }
+.logos .logo-labruket{ max-width:112px; }
+@media (min-width:900px){
+  .logos{ flex-wrap:nowrap; }
+  .logos li{ flex:1 1 0; }
+  .logo-haglofs svg{ max-width:124px; } .logos .logo-ortlieb{ max-width:170px; } .logo-loow svg{ max-width:150px; }
+  .logo-campanyon svg{ max-width:164px; } .logos .logo-labruket{ max-width:146px; }
+}
+.brands + .section{ padding-top:clamp(48px,7vw,88px); }
+
+/* number before a label, instead of a dot */
+.label .num{ margin-right:.9em; }
+
+/* flags for top countries: small and round, real flag colours */
+.stats-row .flags{ display:flex; gap:10px; align-items:center; height:clamp(1.6rem,4vw,2.4rem); }
+.flag{ display:block; width:clamp(28px,3.4vw,38px); aspect-ratio:1; border-radius:50%; overflow:hidden; box-shadow:0 0 0 1px var(--line); }
+.flag svg{ display:block; width:100%; height:100%; }
+
+/* vibe with four points */
+@media (min-width:1000px){ .vibe.four{ grid-template-columns:repeat(4,1fr); } }
+
+/* ---------- v2: smoother transitions between sections ----------
+   Every sub-section opens the same way: a thin line, the label, then the heading
+   stacked on the left (no label floating far left of the heading), with an even rhythm. */
+.sub-block{ padding-top:clamp(64px,8vw,104px); }
+.sub-block > .head, .sub-block.two{ border-top:1px solid var(--line); padding-top:18px; }
+.sub-block.two{ margin-top:clamp(64px,8vw,104px); }
+.head{ display:block; margin-bottom:clamp(24px,3.4vw,40px); }
+.head .label{ margin-bottom:10px; }
+.head p{ margin-top:12px; max-width:36em; }
+@media (min-width:900px){ .head{ display:block; } .head p{ grid-column:auto; } }
+/* the vibe row no longer needs its own heavy line under the heading */
+@media (min-width:1000px){ .vibe{ border-top:1px solid var(--line); } }
+/* the packages: thinner lines on top, matching the rest */
+.service{ border-top-color:var(--line); }
+/* the strip of videos and the photo tabs sit a little closer to what follows */
+.strip{ padding-bottom:8px; }
+
+/* top countries as a small numbered list (replaces the flags) */
+.stats-row .countries{ list-style:none; margin:0 0 8px; padding:0; display:grid; grid-template-columns:auto auto; justify-content:start; gap:4px 22px; }
+.stats-row .countries li{ font-size:clamp(1.05rem,1.7vw,1.3rem); font-weight:700; letter-spacing:-.01em; line-height:1.15; }
+.stats-row .countries i{ font-style:normal; font-size:11px; font-weight:600; color:var(--moss); margin-right:8px; vertical-align:2px; }
+
+/* v3: longer gallery. 12 photos per tab at first, the rest behind "More photos" */
+.js-gallery .panel img.more{ display:none; }
+.js-gallery.open .panel img.more{ display:block; animation:fade .7s ease; }
+.more-photos{
+  display:block; margin:clamp(20px,3vw,32px) auto 0; padding:12px 22px; border-radius:999px;
+  background:none; border:1px solid var(--ink); color:var(--ink); cursor:pointer;
+  font:inherit; font-size:11px; font-weight:600; letter-spacing:.14em; text-transform:uppercase;
+  transition:background-color .3s, color .3s;
+}
+.more-photos:hover{ background:var(--ink); color:var(--bg); }
+.no-js .more-photos{ display:none; }
+
+/* v3: gallery as a grid in rows (not columns), so the order is exactly as set in the HTML */
+.panel{ columns:auto; display:grid; grid-template-columns:repeat(2,1fr); gap:8px; }
+.panel img{ margin:0; }
+@media (min-width:760px){ .panel{ grid-template-columns:repeat(4,1fr); gap:14px; } }
+.panel[hidden]{ display:none; }
+
+/* v3: top countries as small flags with a rank number (real colours, same size, soft corners, thin line) */
+.stats-row .flag-rank{ list-style:none; margin:0 0 8px; padding:0; display:flex; gap:clamp(10px,1.4vw,16px); align-items:flex-end; }
+.flag-rank li{ display:flex; flex-direction:column; gap:6px; }
+.flag-rank .label{ font-size:10px; line-height:1; color:var(--moss); }
+.flag2{ display:block; width:clamp(34px,3.6vw,46px); aspect-ratio:3/2; border-radius:4px; overflow:hidden; box-shadow:0 0 0 1px var(--line), 0 1px 3px rgba(28,33,29,.08); }
+.flag2 svg{ display:block; width:100%; height:100%; }
+
+/* v3: vibe without numbers */
+.vibe > div{ grid-template-columns:1fr; }
+.vibe span:not(.label){ grid-column:auto; }
+@media (min-width:1000px){ .vibe b{ margin-top:0; } }
+
+/* v3: a small Instagram profile preview (links to the profile and to each post) */
+.ig-card{ background:var(--bg-2); border-radius:var(--radius); padding:14px; max-width:520px; }
+.ig-head{ display:flex; align-items:center; gap:12px; padding:2px 2px 14px; }
+.ig-avatar{ width:46px; height:46px; border-radius:50%; object-fit:cover; flex:0 0 auto; box-shadow:0 0 0 2px var(--bg), 0 0 0 3px var(--line); }
+.ig-name{ display:flex; flex-direction:column; line-height:1.25; min-width:0; }
+.ig-name b{ font-weight:600; font-size:15px; }
+.ig-name span{ font-size:13px; color:var(--muted); }
+.ig-follow{ margin-left:auto; flex:0 0 auto; padding:9px 14px; border-radius:999px; background:var(--ink); color:var(--bg);
+  font-size:10px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; transition:background-color .3s; }
+.ig-head:hover .ig-follow{ background:var(--moss); }
+.ig-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:4px; border-radius:6px; overflow:hidden; }
+.ig-grid a{ position:relative; display:block; }
+.ig-grid img{ width:100%; aspect-ratio:4/5; object-fit:cover; display:block; transition:opacity .3s; }
+.ig-grid a:hover img{ opacity:.85; }
+.ig-type{ position:absolute; top:6px; right:6px; width:24px; height:24px; padding:4px; border-radius:50%; background:rgba(20,20,18,.38); }
+.ig-type svg{ width:100%; height:100%; display:block; }
+@media (max-width:380px){ .ig-follow{ padding:8px 10px; letter-spacing:.08em; } }
+/* v3: Instagram box with Sofie's own favourite posts (screenshots keep Instagram's own corner icons) */
+.ig-grid img{ aspect-ratio:3/4; }
+.ig-logo{ display:grid; place-items:center; background:var(--bg); color:var(--ink); }
+.ig-logo svg{ width:24px; height:24px; }
+.ig-more{ display:grid !important; place-items:center; aspect-ratio:3/4; background:var(--bg); color:var(--ink); text-align:center;
+  font-size:11px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; line-height:1.6; transition:background-color .3s, color .3s; }
+.ig-more:hover{ background:var(--ink); color:var(--bg); }
+
+/* v3: real UGC videos. Landscape videos with black bars sit on black, so the bars look intended */
+.clip.wide .clip-frame{ background:#000; }
+.clip.sound .tag{ background:rgba(240,237,230,.92); color:var(--ink); }
+
+/* v4: short future projects without numbers */
+.next-list.short li{ grid-template-columns:1fr; gap:2px; padding:14px 0; align-content:start; }
+.next-list.short p{ grid-column:auto; }
+.next-list.short li.own{ padding:16px; }
+
+/* v4: intro text centred; contact without the small label, so one column */
+.intro-line .lead{ text-align:center; margin-inline:auto; }
+.offers-head h2{ margin-top:0; }
+@media (min-width:900px){ .contact-grid{ grid-template-columns:1fr; } .contact-grid > *:not(.label){ grid-column:auto; } }
+.contact h2{ margin-top:0; }
+
+/* v4: "My work" without the small label */
+#ugc .chapter-head h2{ margin-top:0; }
+
+/* v4: smaller "Where your product fits in" – same sticky effect, takes less room */
+.split-media{ height:36svh; }
+.chapter{ padding:22px 0 16svh; }
+.chapter h3{ font-size:clamp(1.5rem,3vw,2.2rem); }
+.chapter p{ font-size:clamp(15px,1.3vw,17px); }
+@media (min-width:900px){
+  .split{ grid-template-columns:.9fr 1fr; gap:48px; }
+  .split-media{ height:min(62svh,520px); max-height:none; }
+  .chapter{ min-height:42svh; padding:12svh 0 0; }
+  .chapter:first-child{ padding-top:6svh; min-height:36svh; }
+  .chapter:last-child{ min-height:calc(12svh + min(62svh,520px)); padding-bottom:0; }
+}
+
+/* v4: six logos (Siroko added) */
+.logo-siroko svg{ max-width:104px; }
+@media (min-width:900px){ .logo-siroko svg{ max-width:136px; } .logos li{ padding:0 clamp(10px,1.6vw,26px); } }
+
+/* v4: hero without the small label */
+.hero h1{ margin-top:0; }
+/* v4: "Trips" in the menu. On phones only UGC, Trips and Contact fit */
+@media (max-width:600px){ .top .nav-photo, .top .nav-about{ display:none; } }
+@media (max-width:430px){ .top .nav-collabs{ display:none; } .top .nav-contact{ display:inline; } }
+.intro-line .lead span{ display:block; margin-top:.35em; }
+/* v4: contact without the intro line – a little more air under the heading */
+.contact h2{ margin-bottom:clamp(24px,3.5vw,40px); }
+/* v4: calmer intro – a bit smaller, a bit wider, even line lengths (no lonely last words) */
+.intro-line .lead{ font-size:clamp(1.1rem,1.9vw,1.5rem); line-height:1.4; max-width:38em; text-wrap:balance; }
+.intro-line .lead span{ margin-top:.5em; text-wrap:balance; }

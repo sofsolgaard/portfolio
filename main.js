@@ -86,22 +86,30 @@
     });
   });
 
-  // Videos: play when visible, tap to pause. If the file is missing, the poster image stays.
-  document.querySelectorAll('.clip').forEach(function(clip){
+  // Videos: play (muted) when visible. Tap one for sound; the others go quiet. If no file can play, the poster stays.
+  var clips = [].slice.call(document.querySelectorAll('.clip'));
+  clips.forEach(function(clip){
     var v = clip.querySelector('video');
     if (!v) return;
-    var src = v.querySelector('source');
+    var srcs = v.querySelectorAll('source');
     var tag = clip.querySelector('.tag');
     var ok = true;
-    src.addEventListener('error', function(){ ok = false; if (tag) tag.textContent = 'Video soon'; });
+    if (srcs.length) srcs[srcs.length - 1].addEventListener('error', function(){ ok = false; if (tag) tag.textContent = 'Video soon'; });
     clip.querySelector('.clip-frame').addEventListener('click', function(){
       if (!ok) return;
-      if (v.paused) { v.play().catch(function(){}); } else { v.pause(); }
+      var turnOn = v.muted;
+      clips.forEach(function(c){
+        var o = c.querySelector('video'); if (!o) return;
+        o.muted = true; c.classList.remove('sound');
+        var tg = c.querySelector('.tag'); if (tg && tg.textContent !== 'Video soon') tg.textContent = 'Tap for sound';
+      });
+      if (turnOn){ v.muted = false; v.play().catch(function(){}); clip.classList.add('sound'); if (tag) tag.textContent = 'Sound on'; }
     });
     if (hasIO){
       new IntersectionObserver(function(e){
         if (!ok) return;
-        if (e[0].isIntersecting) { v.play().catch(function(){}); } else { v.pause(); }
+        if (e[0].isIntersecting) { v.play().catch(function(){}); }
+        else { v.pause(); if (!v.muted){ v.muted = true; clip.classList.remove('sound'); if (tag) tag.textContent = 'Tap for sound'; } }
       }, { threshold: .6 }).observe(clip);
     }
   });
@@ -125,4 +133,18 @@
   window.addEventListener('scroll', function(){ if (!t){ t = true; requestAnimationFrame(function(){ t = false; drift(); }); } }, { passive: true });
   window.addEventListener('resize', drift);
   drift();
+})();
+
+// Version 3: gallery shows 12 photos per tab, "More photos" shows the rest (and hides them again)
+(function(){
+  var g = document.getElementById('gallery');
+  var btn = g && g.querySelector('.more-photos');
+  if (!btn) return;
+  g.classList.add('js-gallery');
+  btn.addEventListener('click', function(){
+    var open = g.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+    btn.textContent = open ? 'Fewer photos ↑' : 'More photos ↓';
+    if (!open) g.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
 })();
