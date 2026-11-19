@@ -532,3 +532,9 @@ em,i{ font-style:normal; }
 .next-list.short li{ grid-template-columns:1fr; gap:2px; padding:14px 0; align-content:start; }
 .next-list.short p{ grid-column:auto; }
 .next-list.short li.own{ padding:16px; }
+
+/* v4: intro text centred; contact without the small label, so one column */
+.intro-line .lead{ text-align:center; margin-inline:auto; }
+.offers-head h2{ margin-top:0; }
+@media (min-width:900px){ .contact-grid{ grid-template-columns:1fr; } .contact-grid > *:not(.label){ grid-column:auto; } }
+.contact h2{ margin-top:0; }
