@@ -567,3 +567,6 @@ em,i{ font-style:normal; }
 .intro-line .lead span{ display:block; margin-top:.35em; }
 /* v4: contact without the intro line – a little more air under the heading */
 .contact h2{ margin-bottom:clamp(24px,3.5vw,40px); }
+/* v4: calmer intro – a bit smaller, a bit wider, even line lengths (no lonely last words) */
+.intro-line .lead{ font-size:clamp(1.1rem,1.9vw,1.5rem); line-height:1.4; max-width:38em; text-wrap:balance; }
+.intro-line .lead span{ margin-top:.5em; text-wrap:balance; }
