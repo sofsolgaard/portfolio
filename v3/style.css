@@ -523,3 +523,7 @@ em,i{ font-style:normal; }
 .ig-more{ display:grid !important; place-items:center; aspect-ratio:3/4; background:var(--bg); color:var(--ink); text-align:center;
   font-size:11px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; line-height:1.6; transition:background-color .3s, color .3s; }
 .ig-more:hover{ background:var(--ink); color:var(--bg); }
+
+/* v3: real UGC videos. Landscape videos with black bars sit on black, so the bars look intended */
+.clip.wide .clip-frame{ background:#000; }
+.clip.sound .tag{ background:rgba(240,237,230,.92); color:var(--ink); }
