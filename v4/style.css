@@ -554,3 +554,7 @@ em,i{ font-style:normal; }
   .chapter:first-child{ padding-top:6svh; min-height:36svh; }
   .chapter:last-child{ min-height:calc(12svh + min(62svh,520px)); padding-bottom:0; }
 }
+
+/* v4: six logos (Siroko added) */
+.logo-siroko svg{ max-width:104px; }
+@media (min-width:900px){ .logo-siroko svg{ max-width:136px; } .logos li{ padding:0 clamp(10px,1.6vw,26px); } }
